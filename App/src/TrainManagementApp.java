@@ -1,36 +1,40 @@
-import java.util.HashSet;
+import java.util.LinkedList;
 
-public class TrainManagementApp{
+public class TrainManagementApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Train Consist Management App (UC3) ===");
+        System.out.println("=== Train Consist Management App (UC4) ===");
 
-        // 1. Create HashSet for unique bogie IDs
-        HashSet<String> bogieIDs = new HashSet<>();
+        // 1. Create LinkedList for train consist
+        LinkedList<String> train = new LinkedList<>();
 
-        // 2. Add bogie IDs (including duplicates)
-        System.out.println("\nAdding bogie IDs...");
+        // 2. Add bogies
+        train.add("Engine");
+        train.add("Sleeper");
+        train.add("AC");
+        train.add("Cargo");
+        train.add("Guard");
 
-        addBogie(bogieIDs, "B101");
-        addBogie(bogieIDs, "B102");
-        addBogie(bogieIDs, "B103");
-        addBogie(bogieIDs, "B101"); // duplicate
-        addBogie(bogieIDs, "B102"); // duplicate
+        System.out.println("\nInitial train consist:");
+        System.out.println(train);
 
-        // 3. Display unique bogie IDs
-        System.out.println("\nUnique bogie IDs:");
-        System.out.println(bogieIDs);
+        // 3. Insert Pantry Car at position 2 (index 2)
+        System.out.println("\nInserting 'Pantry Car' at position 2...");
+        train.add(2, "Pantry Car");
+
+        System.out.println("After insertion:");
+        System.out.println(train);
+
+        // 4. Remove first and last bogie
+        System.out.println("\nRemoving first and last bogies...");
+        train.removeFirst();
+        train.removeLast();
+
+        // 5. Final train consist
+        System.out.println("\nFinal train consist:");
+        System.out.println(train);
 
         System.out.println("\nProgram continues...");
-    }
-
-    // Helper method to show duplicate handling clearly
-    public static void addBogie(HashSet<String> set, String id) {
-        if (set.add(id)) {
-            System.out.println("Added: " + id);
-        } else {
-            System.out.println("Duplicate ignored: " + id);
-        }
     }
 }
