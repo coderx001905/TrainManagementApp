@@ -1,38 +1,31 @@
-import java.util.LinkedList;
+import java.util.LinkedHashSet;
 
 public class TrainManagementApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Train Consist Management App (UC4) ===");
+        System.out.println("=== Train Consist Management App (UC5) ===");
 
-        // 1. Create LinkedList for train consist
-        LinkedList<String> train = new LinkedList<>();
+        // 1. Create LinkedHashSet for train formation
+        LinkedHashSet<String> train = new LinkedHashSet<>();
 
         // 2. Add bogies
+        System.out.println("\nAdding bogies...");
         train.add("Engine");
         train.add("Sleeper");
-        train.add("AC");
         train.add("Cargo");
         train.add("Guard");
 
-        System.out.println("\nInitial train consist:");
-        System.out.println(train);
+        // 3. Attempt to add duplicate
+        System.out.println("\nAttempting to add duplicate 'Sleeper'...");
+        boolean added = train.add("Sleeper");
 
-        // 3. Insert Pantry Car at position 2 (index 2)
-        System.out.println("\nInserting 'Pantry Car' at position 2...");
-        train.add(2, "Pantry Car");
+        if (!added) {
+            System.out.println("Duplicate ignored: Sleeper");
+        }
 
-        System.out.println("After insertion:");
-        System.out.println(train);
-
-        // 4. Remove first and last bogie
-        System.out.println("\nRemoving first and last bogies...");
-        train.removeFirst();
-        train.removeLast();
-
-        // 5. Final train consist
-        System.out.println("\nFinal train consist:");
+        // 4. Display final formation
+        System.out.println("\nFinal train formation:");
         System.out.println(train);
 
         System.out.println("\nProgram continues...");
